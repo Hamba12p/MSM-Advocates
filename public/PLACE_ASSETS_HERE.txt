@@ -1,0 +1,13 @@
+Place the following files in this directory before running npm run dev:
+
+  msm-logo.png          The MSM Advocates square logo (transparent background)
+                        Source: ChatGPT_Image_Jun_26__2026__02_27_32_PM.png
+                        Rename and copy here.
+
+  favicon.ico           Browser tab icon
+  apple-touch-icon.png  iOS home screen icon (180x180)
+  og-default.jpg        Default social share image (1200x630)
+  site.webmanifest      PWA manifest (optional)
+
+The app renders without these files but will show broken image indicators
+for the logo in the Navbar and Footer until msm-logo.png is in place.
