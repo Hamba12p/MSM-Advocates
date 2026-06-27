@@ -79,10 +79,10 @@ const ALL_TEAM_QUERY = `
 `
 
 export async function getAllTeamMembers(): Promise<TeamMember[]> {
-  return sanityFetch<TeamMember[]>({
+  return (await sanityFetch<TeamMember[]>({
     query: ALL_TEAM_QUERY,
     tags:  ['teamMember'],
-  })
+  })) ?? []
 }
 
 const TEAM_MEMBER_BY_SLUG_QUERY = `
@@ -120,10 +120,10 @@ export async function getTeamMemberBySlug(
 }
 
 export async function getAllTeamSlugs(): Promise<string[]> {
-  const result = await sanityFetch<{ slug: string }[]>({
+  const result = (await sanityFetch<{ slug: string }[]>({
     query: `*[_type == "teamMember"]{ "slug": slug.current }`,
     tags:  ['teamMember'],
-  })
+  })) ?? []
   return result.map((r) => r.slug)
 }
 
@@ -143,10 +143,10 @@ const ALL_PRACTICE_AREAS_QUERY = `
 `
 
 export async function getAllPracticeAreas(): Promise<PracticeArea[]> {
-  return sanityFetch<PracticeArea[]>({
+  return (await sanityFetch<PracticeArea[]>({
     query: ALL_PRACTICE_AREAS_QUERY,
     tags:  ['practiceArea'],
-  })
+  })) ?? []
 }
 
 const PRACTICE_AREA_BY_SLUG_QUERY = `
@@ -179,10 +179,10 @@ export async function getPracticeAreaBySlug(
 }
 
 export async function getAllPracticeAreaSlugs(): Promise<string[]> {
-  const result = await sanityFetch<{ slug: string }[]>({
+  const result = (await sanityFetch<{ slug: string }[]>({
     query: `*[_type == "practiceArea"]{ "slug": slug.current }`,
     tags:  ['practiceArea'],
-  })
+  })) ?? []
   return result.map((r) => r.slug)
 }
 
@@ -207,10 +207,10 @@ const ALL_INSIGHTS_QUERY = `
 `
 
 export async function getAllInsights(): Promise<Insight[]> {
-  return sanityFetch<Insight[]>({
+  return (await sanityFetch<Insight[]>({
     query: ALL_INSIGHTS_QUERY,
     tags:  ['insight'],
-  })
+  })) ?? []
 }
 
 const INSIGHTS_PAGINATED_QUERY = `
@@ -225,11 +225,11 @@ export async function getInsightsPaginated(
 ): Promise<Insight[]> {
   const from = (page - 1) * perPage
   const to   = from + perPage
-  return sanityFetch<Insight[]>({
+  return (await sanityFetch<Insight[]>({
     query:  INSIGHTS_PAGINATED_QUERY,
     params: { from, to },
     tags:   ['insight'],
-  })
+  })) ?? []
 }
 
 const INSIGHT_BY_SLUG_QUERY = `
@@ -259,10 +259,10 @@ export async function getInsightBySlug(
 }
 
 export async function getAllInsightSlugs(): Promise<string[]> {
-  const result = await sanityFetch<{ slug: string }[]>({
+  const result = (await sanityFetch<{ slug: string }[]>({
     query: `*[_type == "insight"]{ "slug": slug.current }`,
     tags:  ['insight'],
-  })
+  })) ?? []
   return result.map((r) => r.slug)
 }
 
@@ -283,11 +283,11 @@ export async function getRelatedInsights(
   category:    string,
   tags:        string[],
 ): Promise<Insight[]> {
-  return sanityFetch<Insight[]>({
+  return (await sanityFetch<Insight[]>({
     query:  RELATED_INSIGHTS_QUERY,
     params: { currentSlug, category, tags },
     tags:   ['insight'],
-  })
+  })) ?? []
 }
 
 // ─── Homepage data bundle ─────────────────────────────────────────────────
@@ -315,8 +315,16 @@ export async function getHomepageData(): Promise<{
   partners:      TeamMemberRef[]
   latestInsights: Insight[]
 }> {
-  return sanityFetch({
+  return (await sanityFetch<{
+    practiceAreas: PracticeArea[]
+    partners: TeamMemberRef[]
+    latestInsights: Insight[]
+  }>({
     query: HOMEPAGE_QUERY,
     tags:  ['practiceArea', 'teamMember', 'insight'],
-  })
+  })) ?? {
+    practiceAreas: [],
+    partners: [],
+    latestInsights: [],
+  }
 }
