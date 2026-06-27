@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode } from 'react'
+import { type ReactNode, type JSX } from 'react'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -23,7 +23,7 @@ interface MotionWrapperProps {
 
 // ─── Variant definitions ─────────────────────────────────────────────────
 
-const variants: Record<AnimationType, Variants> = {
+const variants: Record<string, Variants> = {
   'fade-up': {
     hidden:  { opacity: 0, y: 24 },
     visible: { opacity: 1, y: 0 },
@@ -107,7 +107,7 @@ interface StaggerContainerProps {
   as?:         'div' | 'ul' | 'ol' | 'section'
 }
 
-const staggerVariants = {
+const staggerVariants: Variants = {
   hidden:  {},
   visible: (staggerBy: number) => ({
     transition: {
