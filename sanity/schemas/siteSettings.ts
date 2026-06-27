@@ -10,9 +10,6 @@ export const siteSettings = defineType({
   type:  'document',
   icon: () => '⚙️',
 
-  // Prevent creating multiple settings documents
-  __experimental_actions: ['update', 'publish'],
-
   preview: {
     select: { title: 'firmTagline' },
     prepare({ title }) {
