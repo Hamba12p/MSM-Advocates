@@ -1,7 +1,7 @@
 'use client'
 
 import { type ReactNode } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 // ─── Types ────────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ interface MotionWrapperProps {
 
 // ─── Variant definitions ─────────────────────────────────────────────────
 
-const variants: Record<AnimationType, { hidden: object; visible: object }> = {
+const variants: Record<AnimationType, Variants> = {
   'fade-up': {
     hidden:  { opacity: 0, y: 24 },
     visible: { opacity: 1, y: 0 },
