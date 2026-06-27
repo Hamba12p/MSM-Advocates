@@ -6,6 +6,7 @@ import { Navbar }      from '@/components/layout/Navbar'
 import { Footer }      from '@/components/layout/Footer'
 import { WhatsAppFAB } from '@/components/layout/WhatsAppFAB'
 import { FIRM }        from '@/lib/constants'
+import { Analytics }   from '@vercel/analytics/next'
 
 // ─── Font loading via next/font (no render-blocking) ─────────────────────
 
@@ -114,6 +115,7 @@ export default function RootLayout({
 
         <Footer />
         <WhatsAppFAB />
+        <Analytics />
       </body>
     </html>
   )
