@@ -185,7 +185,20 @@ export const PRACTICE_AREAS_SEED = [
 
 // ─── Team (static seed — CMS is source of truth in production) ────────────
 
-export const TEAM_SEED = [
+export interface TeamSeedMember {
+  slug: string
+  name: string
+  role: string
+  tier: 'partner' | 'associate' | 'assistant'
+  specialisms: string[]
+  credentials: string
+  memberships: string[]
+  bio: string
+  orderIndex: number
+  email?: string
+}
+
+export const TEAM_SEED: TeamSeedMember[] = [
   {
     slug:       'ali-sebaggala-sengendo',
     name:       'Ali Sebaggala Sengendo',
@@ -196,6 +209,7 @@ export const TEAM_SEED = [
     memberships:['Uganda Muslim Lawyers Association'],
     bio:        'Ali Sebaggala Sengendo is the founding Managing Partner of MSM Advocates and a specialist in litigation and taxation. He previously served as a Senior Lecturer at the Islamic University in Uganda (IUIU) and is an active member of the Uganda Muslim Lawyers Association. His practice spans commercial disputes, constitutional matters, and corporate tax.',
     orderIndex: 1,
+    email:      'alisebaggala@yahoo.co.uk',
   },
   {
     slug:       'mwebe-henry',
