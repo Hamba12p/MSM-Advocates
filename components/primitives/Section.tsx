@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { type ReactNode, type JSX } from 'react'
 import { cn } from '@/lib/utils'
 import { Container } from './Container'
 import type { SectionBg, SectionPad } from '@/types'

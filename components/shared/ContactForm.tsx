@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useState, type FormEvent, type ReactNode } from 'react'
 import { CTAButton } from '@/components/primitives/CTAButton'
 import { MATTER_TYPES } from '@/lib/constants'
 import { cn } from '@/lib/utils'
@@ -11,7 +11,7 @@ interface FieldProps {
   label:       string
   htmlFor:     string
   required?:   boolean
-  children:    React.ReactNode
+  children:    ReactNode
   error?:      string
 }
 

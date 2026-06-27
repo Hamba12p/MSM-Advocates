@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { DM_Serif_Display, Inter } from 'next/font/google'
+import { type ReactNode } from 'react'
 import './globals.css'
 import { Navbar }      from '@/components/layout/Navbar'
 import { Footer }      from '@/components/layout/Footer'
@@ -97,7 +98,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html
