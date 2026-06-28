@@ -299,6 +299,17 @@ export const TEAM_SEED: TeamSeedMember[] = [
     bio:        '[NEEDS CONTENT]',
     orderIndex: 9,
   },
+  {
+    slug:       'mulumba-kasim',
+    name:       'Mulumba Kasim',
+    role:       'Legal Assistant',
+    tier:       'assistant' as const,
+    specialisms:['Legal Research', 'Document Management', 'Litigation Support'],
+    credentials:'',
+    memberships:[],
+    bio:        '[NEEDS CONTENT]',
+    orderIndex: 10,
+  },
 ] as const
 
 // ─── Contact form — matter type options ────────────────────────────────────
